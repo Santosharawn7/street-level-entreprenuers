@@ -4,33 +4,36 @@ import React, { useState } from "react";
 const SOCIALS = [
   {
     href: "https://www.facebook.com/profile.php?id=61563365032915&mibextid=LQQJ4d",
-    label: "Facebook",
-    svg: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M22 12A10 10 0 1 0 2 12a10 10 0 0 0 20 0ZM13 12.5V20h-3v-7.5H8V10h2V8.5C10 6.8 11.2 6 12.7 6h2.1V8h-1.4c-.5 0-.7.3-.7.7V10h2.4l-.3 2.5H13Z" />
-      </svg>
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+        alt="Facebook"
+        className="w-8 h-8"
+      />
     ),
+    label: "Facebook",
   },
   {
     href: "https://www.linkedin.com/company/street-level-entrepreneur/",
-    label: "LinkedIn",
-    svg: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM7 19v-7H4v7h3Zm-1.5-8.3A1.65 1.65 0 1 0 7.5 9a1.65 1.65 0 0 0-2 1.7ZM20 19v-4.2c0-2.1-1.1-3-2.6-3-1.1 0-1.6.6-1.9 1.1V12h-3v7h3v-3.6c0-.6.1-1.2.9-1.2.7 0 .8.6.8 1.2V19h3Z" />
-      </svg>
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+        alt="LinkedIn"
+        className="w-8 h-8"
+      />
     ),
+    label: "LinkedIn",
   },
   {
     href: "https://www.instagram.com/streetlevelentrepreneur",
-    label: "Instagram",
-    svg: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-        <rect x={2} y={7} width={20} height={15} rx={5} fill="none" />
-        <circle cx={12} cy={14.5} r={3.5} stroke="currentColor" fill="none" />
-        <circle cx={18.2} cy={9.8} r={1.2} fill="currentColor" />
-        <rect x={4} y={4} width={16} height={16} rx={5} stroke="currentColor" fill="none" />
-      </svg>
+    icon: (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+        alt="Instagram"
+        className="w-8 h-8"
+      />
     ),
+    label: "Instagram",
   },
 ];
 
@@ -82,26 +85,29 @@ ${formData.message}
         <h1 className="text-[60px] font-bold text-[#176480] leading-none font-poppins mb-8 mt-4">
           Contact
         </h1>
-        <div className="text-2xl text-[#176480] font-open-sans mb-16 max-w-4xl">
+        <div className="text-2xl md:text-4xl font-light text-[#165F78] font-open-sans mb-16 max-w-6xl">
           Send us an email to set up an appointment, ask us questions, or find out more about our services. We look forward to working with you!
         </div>
 
         {/* Form Row */}
         <div className="w-full relative mb-0">
           {/* Social icons right aligned */}
-          <div className="flex flex-row gap-5 absolute right-0 top-[-50px] md:top-0 md:right-0 md:mt-0 z-10">
-            {SOCIALS.map((soc) => (
-              <a
-                key={soc.label}
-                href={soc.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={soc.label}
-                className="text-black hover:text-[#176480] transition-colors"
-              >
-                {soc.svg}
-              </a>
-            ))}
+          <div className="flex justify-end mb-6">
+            <div className="flex flex-row gap-7">
+              {SOCIALS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="text-black hover:text-[#e4b05a] transition-colors"
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="w-full mt-4">
@@ -166,7 +172,7 @@ ${formData.message}
                 </p>
                 <a
                   href="mailto:info@streetlevelentrepreneur.com"
-                  className="underline text-black font-open-sans text-[16px] font-bold"
+                  className="underline !text-black font-open-sans text-[16px] font-bold"
                 >
                   info@streetlevelentrepreneur.com
                 </a>

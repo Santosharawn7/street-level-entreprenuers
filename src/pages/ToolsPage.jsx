@@ -3,7 +3,7 @@ import React from "react";
 const STAGE_CARDS = [
   {
     title: "Idea Stage",
-    bg: "bg-[#efb452]",
+    bg: "bg-[#EDAE49]",
     text: "In this stage, members of a community notice an urgent need in their neighbourhood, and have a passion to address it.",
     tools: [
       "Asset Mapping",
@@ -13,20 +13,80 @@ const STAGE_CARDS = [
     ],
     icon: (
       // Lightbulb SVG
-      <svg width="90" height="110" viewBox="0 0 70 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <ellipse cx="35" cy="55" rx="25" ry="28" stroke="#222" strokeWidth="3"/>
-          <path d="M35 83v-8" stroke="#222" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M29 87h12" stroke="#222" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M30 83c0 2 1 4 5 4s5-2 5-4" stroke="#222" strokeWidth="2"/>
-          <circle cx="35" cy="56" r="12" fill="#efb452" stroke="#222" strokeWidth="2"/>
-          <path d="M35 24v-9" stroke="#efb452" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M57 55h10" stroke="#efb452" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M13 55H3" stroke="#efb452" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M53.5 37.5l6.5-6.5" stroke="#efb452" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M16.5 37.5l-6.5-6.5" stroke="#efb452" strokeWidth="3" strokeLinecap="round"/>
-        </g>
-      </svg>
+      <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="180"
+  height="180"
+  viewBox="0 0 180 180"
+  fill="none"
+>
+  <ellipse
+    cx="90"
+    cy="80"
+    rx="60"
+    ry="60"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <path
+    d="M70 120 Q90 110 110 120"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <path
+    d="M80 120 Q90 105 100 120"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <rect
+    x="65"
+    y="120"
+    width="50"
+    height="12"
+    rx="6"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <rect
+    x="70"
+    y="132"
+    width="40"
+    height="10"
+    rx="5"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <rect
+    x="75"
+    y="142"
+    width="30"
+    height="10"
+    rx="5"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <path
+    d="M85 152 Q90 160 95 152"
+    stroke="#111"
+    stroke-width="4"
+    fill="none"
+  />
+  <line x1="90" y1="10" x2="90" y2="34" stroke="#111" stroke-width="4" stroke-linecap="round" />
+  <line x1="31" y1="37" x2="49" y2="53" stroke="#111" stroke-width="4" stroke-linecap="round" />
+  <line x1="10" y1="80" x2="34" y2="80" stroke="#111" stroke-width="4" stroke-linecap="round" />
+  <line x1="31" y1="123" x2="49" y2="107" stroke="#111" stroke-width="4" stroke-linecap="round" />
+  <line x1="149" y1="37" x2="131" y2="53" stroke="#111" stroke-width="4" stroke-linecap="round" />
+  <line x1="170" y1="80" x2="146" y2="80" stroke="#111" stroke-width="4" stroke-linecap="round" />
+  <line x1="149" y1="123" x2="131" y2="107" stroke="#111" stroke-width="4" stroke-linecap="round" />
+</svg>
+
+
     ),
     iconAlign: "items-end",
     textAlign: "text-left",
@@ -34,7 +94,7 @@ const STAGE_CARDS = [
   },
   {
     title: "Startup Stage",
-    bg: "bg-[#7ea3c6]",
+    bg: "bg-[#6B9AC4]",
     text: "The work is starting to take the shape and feel of a project. Although there is some distribution of responsibilities among the team, at this point there are just a few persons who are truly dedicated to the work, and handle most of the tasks.",
     tools: [
       "Strategic Planning",
@@ -49,7 +109,7 @@ const STAGE_CARDS = [
   },
   {
     title: "Growth Stage",
-    bg: "bg-[#18647b]",
+    bg: "bg-[#165F78]",
     text: "In the growth base, the group has made multiple applications, and has successfully received funding! There is a feeling of excitement in the air. You feel validated for all the hard work you’ve put in up to this point.",
     tools: [
       "Strategic planning",
@@ -83,7 +143,7 @@ const STAGE_CARDS = [
   },
   {
     title: "Maturity Stage",
-    bg: "bg-[#022943]",
+    bg: "bg-[#002642]",
     text: "The organization is operating at its maximum level of efficiency. There is a steady stream of projects being managed, with a core group of staff members, gaining significant experience on each subsequent initiative.",
     tools: [
       "Tools to consider during this stage includes:",
@@ -100,7 +160,7 @@ const STAGE_CARDS = [
   },
   {
     title: "Succession (Decline) Stage",
-    bg: "bg-[#efb452]",
+    bg: "bg-[#EDAE49]",
     text: "The work in communities have started to lose its impact. Activities have strayed away from the original mission and vision. The group may also be struggling to gain additional funding, despite their best efforts.",
     tools: [
       "Legal Advice for Transfer of Assets or Closure",
@@ -122,32 +182,36 @@ const STAGE_CARDS = [
 
 export default function ToolsPage() {
   return (
-    <div className="pt-16 pb-24 min-h-screen bg-white">
+    <div className=" pb-24 min-h-screen bg-white">
       {/* Header */}
-      <section className="py-12 bg-[#15334e] text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold font-poppins mb-4">
+      <section className="py-20 bg-[#032944] text-white">
+        <div className="max-w-6xl mx-auto  text-center">
+          <h1 className="text-4xl md:!text-7xl font-bold font-poppins mb-4">
             Street-Level Tools for Community Leaders
           </h1>
-          <p className="text-2xl md:text-2xl font-bold mb-3">
-            Tools for each stage of the Nonprofit Life Cycle
-          </p>
-          <div className="text-lg md:text-xl font-open-sans font-medium">
-            Get the resources you need to make a difference in your Community.
-          </div>
+          
         </div>
       </section>
+      <div className="text-black text-center my-12">
+  <h2 className="font-extrabold text-2xl md:text-6xl mb-4 font-poppins">
+    Tools for each stage of the Nonprofit Life Cycle
+  </h2>
+  <div className="font-extrabold text-lg md:text-4xl font-open-sans max-w-5xl mx-auto leading-tight">
+    Get the resources you need to make a difference in your<br className="hidden md:inline" /> Community.
+  </div>
+</div>
+
       {/* Stage Cards */}
       <div className="flex flex-col gap-10 mt-12 max-w-[1100px] mx-auto px-4">
         {STAGE_CARDS.map((stage, idx) => (
           <div
             key={stage.title}
-            className={`${stage.bg} ${stage.corner} flex flex-col md:flex-row justify-between p-10 md:p-12 ${stage.textWhite || "text-black"} shadow-md`}
+            className={`${stage.bg} ${stage.corner} flex flex-col  md:flex-row justify-between p-10 md:p-12 ${stage.textWhite || "text-black"} shadow-md`}
             style={{ minHeight: 280 }}
           >
             <div className={`flex-1 flex flex-col justify-between ${stage.textAlign}`}>
               <div>
-                <h2 className="text-3xl md:text-4xl font-extrabold font-poppins mb-2">{stage.title}</h2>
+                <h2 className="text-3xl md:text-4xl text-center font-extrabold font-poppins mb-2">{stage.title}</h2>
                 <p className="text-xl font-semibold mb-5 font-open-sans">{stage.text}</p>
               </div>
               <div className={`mt-5 ${stage.toolsRight ? "md:text-right md:items-end" : ""}`}>

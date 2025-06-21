@@ -16,11 +16,11 @@ const Footer = () => {
             <div>Copyright © 2025</div>
             <div>All rights reserved.</div>
             <div>
-              <a href="#" className="underline text-white hover:text-[#e4b05a] transition-colors !text-white">
+              <a href="#" className="underline  hover:text-[#e4b05a] transition-colors !text-white">
                 Terms of Service
               </a>{" "}
               |{" "}
-              <a href="#" className="underline text-white hover:text-[#e4b05a] transition-colors !text-white">
+              <a href="#" className="underline hover:text-[#e4b05a] transition-colors !text-white">
                 Privacy Policy
               </a>
             </div>
@@ -30,11 +30,11 @@ const Footer = () => {
         {/* Navigation + Social */}
         <div className="flex flex-col items-center md:min-w-[340px]">
           <div className="flex flex-col items-left mb-6 space-y-0.5">
-            <a href="#about" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">About</a>
-            <a href="#services" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">Services</a>
-            <a href="#articles" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">SLE Articles</a>
-            <a href="#tools" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">Entrepreneurship Tools</a>
-            <a href="#contact" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">Contact</a>
+            <a href="#about" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">About</a>
+            <a href="#services" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">Services</a>
+            <a href="#articles" className="!font-bold text-lg  hover:text-[#e4b05a] transition-colors !text-white">SLE Articles</a>
+            <a href="#tools" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">Entrepreneurship Tools</a>
+            <a href="#contact" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">Contact</a>
           </div>
           <div className="flex flex-row gap-7 mt-3">
             <a
@@ -73,13 +73,13 @@ const Footer = () => {
           <div className="w-full flex flex-col items-center md:items-start">
             <a
               href="#"
-              className="inline-flex items-center text-white hover:text-[#e4b05a] mb-2 text-base font-semibold transition-colors !text-white"
+              className="inline-flex items-center hover:text-[#e4b05a] mb-2 text-base font-semibold transition-colors !text-white"
             >
               <span role="img" aria-label="Sign up" className="mr-1">📝</span> Sign up here
             </a>
             <a
               href="mailto:info@streetlevelentrepreneur.com?subject=SLE%20Inquiry"
-              className="inline-flex items-center text-white hover:text-[#e4b05a] text-base font-semibold transition-colors !text-white"
+              className="inline-flex items-center  hover:text-[#e4b05a] text-base font-semibold transition-colors !text-white"
             >
               <span role="img" aria-label="Contact" className="mr-1">✉️</span> Contact us today.
             </a>

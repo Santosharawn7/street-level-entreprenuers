@@ -12,7 +12,7 @@ const GetStartedSection = () => (
     </p>
     <Link
       to="/contact"
-      className="bg-[#e4b05a] text-2xl !text-[#002642] font-bold rounded p-16 py-3 shadow hover:bg-[#d09c3f] transition-colors duration-200"
+      className="bg-[#e4b05a] !font-extrabold text-2xl !text-[#002642]  rounded p-16 py-3 shadow hover:bg-[#d09c3f] transition-colors duration-200"
       style={{ fontFamily: "'Montserrat', Arial, sans-serif" }}
     >
       Contact Us

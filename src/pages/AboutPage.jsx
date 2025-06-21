@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import WhyChooseUsSection from "../components/WhyChooseUsSection";
+import { MissionValuesSection } from "../components/MissionValuesSection";
+import { FounderSection } from "../components/FounderSection";
 
 const HEADER_IMAGE =
   "https://static.wixstatic.com/media/58b12b_9ef1956b629443f3b4dd1807cf2e632e~mv2.jpg/v1/fill/w_1280,h_186,al_c,q_80,enc_avif,quality_auto/58b12b_9ef1956b629443f3b4dd1807cf2e632e~mv2.jpg";
@@ -212,9 +215,13 @@ const AboutPage = () => {
               ))}
             </div>
           </div>
-
+             
         </div>
+        
       </section>
+      <WhyChooseUsSection/>
+              <MissionValuesSection/>
+              <FounderSection/>
     </div>
   );
 };
