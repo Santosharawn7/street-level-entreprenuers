@@ -15,9 +15,7 @@ const HomePage = () => {
       <FeaturedGrid />
       <ServicesSection />
       <WeWorkWith />
-      <ToolsSection />
       <Testimonial />
-      <ContactSection />
     </>
   );
 };

@@ -1,131 +1,62 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+const navigationItems = [
+  { label: 'About', link: '/about' },
+  { label: 'Services', link: '/services' },
+  { label: 'SLE Articles', link: '/articles' },
+  { label: 'Community Tools', link: '/tools' },
+  { label: 'Business Tools', link: '/business-tools' },
+  { label: 'Contact', link: '/contact' },
+];
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-
-  // Removed type annotation (: string)
-  const scrollToSection = (sectionId) => {
-    if (location.pathname !== '/') {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  const navigationItems = [
-    { label: 'About', link: '/about', scrollTo: 'about' },
-    { label: 'Services', link: '/services', scrollTo: 'services' },
-    { label: 'SLE Articles', link: '/articles', scrollTo: 'articles' },
-    { label: 'Community Tools', link: '/tools', scrollTo: 'tools' },
-    { label: 'Business Tools', link: '/business-tools', scrollTo: 'business-tools' },
-    { label: 'Contact', link: '/contact', scrollTo: 'contact' },
-  ];
-
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <img
-                src="https://ext.same-assets.com/3112424916/3954646047.png"
-                alt="Street Level Entrepreneur logo"
-                className="h-12 w-auto hover:opacity-90 transition-opacity"
-              />
+    <header className="sticky top-0 z-50 bg-white w-full font-sans shadow" style={{ fontFamily: "'Montserrat', Arial, sans-serif" }}>
+      <div className="flex items-center justify-between mx-auto px-8 py-4 max-w-screen-2xl">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src="https://ext.same-assets.com/3112424916/3954646047.png"
+            alt="Street Level Entrepreneur logo"
+            className="h-14 md:h-20 w-auto mr-10"
+          />
+        </Link>
+        {/* Desktop Navigation */}
+        <nav className="flex-1 flex items-center justify-start space-x-10">
+          {navigationItems.map((item) => (
+            <Link
+              key={item.label}
+              to={item.link}
+              className="font-bold !text-black text-lg tracking-tight"
+              style={{ fontFamily: "'Montserrat', Arial, sans-serif", fontWeight: 700 }}
+            >
+              {item.label}
             </Link>
+          ))}
+        </nav>
+        {/* Search bar */}
+        <div className="hidden md:flex items-center ml-6">
+          <div className="flex items-center bg-gray-100 rounded-md px-4 py-2 w-64">
+            <svg
+              className="w-5 h-5 text-gray-500 mr-2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="bg-gray-100 outline-none border-none w-full text-gray-600 text-base"
+              style={{ fontFamily: "'Montserrat', Arial, sans-serif", fontWeight: 500 }}
+            />
           </div>
-
-          {/* Desktop Navigation Menu */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <div key={item.label}>
-                {location.pathname === '/' ? (
-                  <button
-                    onClick={() => scrollToSection(item.scrollTo)}
-                    className="text-sle-navy hover:text-sle-gold transition-colors font-nunito font-medium"
-                  >
-                    {item.label}
-                  </button>
-                ) : (
-                  <Link
-                    to={item.link}
-                    className="text-sle-navy hover:text-sle-gold transition-colors font-nunito font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-sle-navy z-50 relative"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : 'mb-1'
-              }`} />
-              <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : 'mb-1'
-              }`} />
-              <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-              }`} />
-            </div>
-          </button>
         </div>
       </div>
-
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 md:hidden ${
-        isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`} onClick={() => setIsMobileMenuOpen(false)} />
-
-      {/* Mobile Navigation Menu */}
-      <nav className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-40 transform transition-transform duration-300 md:hidden ${
-        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        <div className="pt-20 px-6">
-          <div className="space-y-4">
-            {navigationItems.map((item) => (
-              <div key={item.label}>
-                {location.pathname === '/' ? (
-                  <button
-                    onClick={() => scrollToSection(item.scrollTo)}
-                    className="block w-full text-left py-3 px-4 text-sle-navy hover:text-sle-gold hover:bg-gray-50 rounded-md transition-colors font-nunito font-medium text-lg"
-                  >
-                    {item.label}
-                  </button>
-                ) : (
-                  <Link
-                    to={item.link}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 px-4 text-sle-navy hover:text-sle-gold hover:bg-gray-50 rounded-md transition-colors font-nunito font-medium text-lg"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </nav>
     </header>
   );
 };

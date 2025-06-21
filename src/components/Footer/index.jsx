@@ -1,88 +1,89 @@
-import React from 'react'
-
-import NewsletterForm from '../NewsletterForm';
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-sle-navy text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo and Brand */}
-          <div className="lg:col-span-1">
-            <img
-              src="https://ext.same-assets.com/3112424916/972271915.png"
-              alt="Street Level Entrepreneur brandmark"
-              className="h-16 w-auto mb-4"
-            />
-          </div>
-
-          {/* Navigation Links */}
-          <div className="lg:col-span-1">
-            <nav className="space-y-3">
-              <a href="#about" className="block hover:text-sle-gold transition-colors font-nunito">
-                About
-              </a>
-              <a href="#services" className="block hover:text-sle-gold transition-colors font-nunito">
-                Services
-              </a>
-              <a href="#articles" className="block hover:text-sle-gold transition-colors font-nunito">
-                SLE Articles
-              </a>
-              <a href="#tools" className="block hover:text-sle-gold transition-colors font-nunito">
-                Entrepreneurship Tools
-              </a>
-              <a href="#contact" className="block hover:text-sle-gold transition-colors font-nunito">
-                Contact
-              </a>
-            </nav>
-          </div>
-
-          {/* Social Media */}
-          <div className="lg:col-span-1">
-            <div className="flex space-x-4 mb-6">
-              <a href="https://www.facebook.com/profile.php?id=61563365032915&mibextid=LQQJ4d"
-                 className="hover:opacity-80 transition-opacity"
-                 target="_blank" rel="noopener noreferrer">
-                <img src="https://ext.same-assets.com/3112424916/3405459597.png" alt="Facebook" className="w-6 h-6" />
-              </a>
-              <a href="https://www.linkedin.com/company/street-level-entrepreneur/"
-                 className="hover:opacity-80 transition-opacity"
-                 target="_blank" rel="noopener noreferrer">
-                <img src="https://ext.same-assets.com/3112424916/984117610.png" alt="LinkedIn" className="w-6 h-6" />
-              </a>
-              <a href="https://www.instagram.com/streetlevelentrepreneur"
-                 className="hover:opacity-80 transition-opacity"
-                 target="_blank" rel="noopener noreferrer">
-                <img src="https://ext.same-assets.com/3112424916/2033636806.png" alt="Instagram" className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-semibold mb-4 font-poppins">
-              Stay in touch with us!
-            </h3>
-            <p className="text-sm mb-4 font-open-sans opacity-90">
-              The Street Level Pulse will give you helpful ideas, articles, and tools to get you moving forward.
-            </p>
-            <NewsletterForm />
-            <div className="mt-4">
-              <a
-                href="mailto:info@streetlevelentrepreneur.com?subject=SLE%20Inquiry"
-                className="text-sle-gold hover:text-white transition-colors font-nunito"
-              >
-                Contact us today
+    <footer className="bg-[#002945] py-10 w-full">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0 px-6 md:px-12">
+        {/* Logo & Copyright */}
+        <div className="flex flex-col items-center min-w-[320px] mb-8 md:mb-0">
+          <img
+            src="https://ext.same-assets.com/3112424916/972271915.png"
+            alt="SLE Logo"
+            className="h-24 w-auto mb-2"
+          />
+          <div className="text-center leading-tight text-xs text-white">
+            <div>Street Level Entrepreneur</div>
+            <div>Copyright © 2025</div>
+            <div>All rights reserved.</div>
+            <div>
+              <a href="#" className="underline text-white hover:text-[#e4b05a] transition-colors !text-white">
+                Terms of Service
+              </a>{" "}
+              |{" "}
+              <a href="#" className="underline text-white hover:text-[#e4b05a] transition-colors !text-white">
+                Privacy Policy
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Border */}
-        <div className="border-t border-sle-blue mt-8 pt-8 text-center">
-          <p className="text-sm opacity-75 font-open-sans">
-            © 2025 Street Level Entrepreneur. All rights reserved.
-          </p>
+        {/* Navigation + Social */}
+        <div className="flex flex-col items-center md:min-w-[340px]">
+          <div className="flex flex-col items-left mb-6 space-y-0.5">
+            <a href="#about" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">About</a>
+            <a href="#services" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">Services</a>
+            <a href="#articles" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">SLE Articles</a>
+            <a href="#tools" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">Entrepreneurship Tools</a>
+            <a href="#contact" className="font-semibold text-lg text-white hover:text-[#e4b05a] transition-colors !text-white">Contact</a>
+          </div>
+          <div className="flex flex-row gap-7 mt-3">
+            <a
+              href="https://www.facebook.com/profile.php?id=61563365032915&mibextid=LQQJ4d"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <img src="https://ext.same-assets.com/3112424916/3405459597.png" alt="Facebook" className="w-10 h-10" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/street-level-entrepreneur/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <img src="https://ext.same-assets.com/3112424916/984117610.png" alt="LinkedIn" className="w-10 h-10" />
+            </a>
+            <a
+              href="https://www.instagram.com/streetlevelentrepreneur"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <img src="https://ext.same-assets.com/3112424916/2033636806.png" alt="Instagram" className="w-10 h-10" />
+            </a>
+          </div>
+        </div>
+
+        {/* Stay in touch */}
+        <div className="flex flex-col items-center md:items-start min-w-[320px]">
+          <div className="font-bold mb-2 text-lg text-white">Stay in touch with us!</div>
+          <div className="mb-2 text-base opacity-90 leading-tight text-white max-w-[300px] text-center md:text-left">
+            The Street Level Pulse will give you helpful ideas, articles, and tools to get you moving forward.
+          </div>
+          <div className="w-full flex flex-col items-center md:items-start">
+            <a
+              href="#"
+              className="inline-flex items-center text-white hover:text-[#e4b05a] mb-2 text-base font-semibold transition-colors !text-white"
+            >
+              <span role="img" aria-label="Sign up" className="mr-1">📝</span> Sign up here
+            </a>
+            <a
+              href="mailto:info@streetlevelentrepreneur.com?subject=SLE%20Inquiry"
+              className="inline-flex items-center text-white hover:text-[#e4b05a] text-base font-semibold transition-colors !text-white"
+            >
+              <span role="img" aria-label="Contact" className="mr-1">✉️</span> Contact us today.
+            </a>
+          </div>
         </div>
       </div>
     </footer>
