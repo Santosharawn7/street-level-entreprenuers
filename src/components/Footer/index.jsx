@@ -16,11 +16,20 @@ const Footer = () => {
             <div>Copyright © 2025</div>
             <div>All rights reserved.</div>
             <div>
-              <a href="#" className="underline  hover:text-[#e4b05a] transition-colors !text-white">
+              <a
+                href="/toc"
+                className="!underline hover:text-[#e4b05a] transition-colors !text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Terms of Service
               </a>{" "}
               |{" "}
-              <a href="#" className="underline hover:text-[#e4b05a] transition-colors !text-white">
+              <a
+                href="/pp"
+                target="_blank"
+                className="!underline hover:text-[#e4b05a] transition-colors !text-white"
+              >
                 Privacy Policy
               </a>
             </div>
@@ -30,11 +39,36 @@ const Footer = () => {
         {/* Navigation + Social */}
         <div className="flex flex-col items-center md:min-w-[340px]">
           <div className="flex flex-col items-left mb-6 space-y-0.5">
-            <a href="#about" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">About</a>
-            <a href="#services" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">Services</a>
-            <a href="#articles" className="!font-bold text-lg  hover:text-[#e4b05a] transition-colors !text-white">SLE Articles</a>
-            <a href="#tools" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">Entrepreneurship Tools</a>
-            <a href="#contact" className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white">Contact</a>
+            <a
+              href="#about"
+              className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white"
+            >
+              About
+            </a>
+            <a
+              href="#services"
+              className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white"
+            >
+              Services
+            </a>
+            <a
+              href="#articles"
+              className="!font-bold text-lg  hover:text-[#e4b05a] transition-colors !text-white"
+            >
+              SLE Articles
+            </a>
+            <a
+              href="#tools"
+              className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white"
+            >
+              Entrepreneurship Tools
+            </a>
+            <a
+              href="#contact"
+              className="!font-bold  text-lg  hover:text-[#e4b05a] transition-colors !text-white"
+            >
+              Contact
+            </a>
           </div>
           <div className="flex flex-row gap-7 mt-3">
             <a
@@ -43,7 +77,11 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="Facebook"
             >
-              <img src="https://ext.same-assets.com/3112424916/3405459597.png" alt="Facebook" className="w-10 h-10" />
+              <img
+                src="https://ext.same-assets.com/3112424916/3405459597.png"
+                alt="Facebook"
+                className="w-10 h-10"
+              />
             </a>
             <a
               href="https://www.linkedin.com/company/street-level-entrepreneur/"
@@ -51,7 +89,11 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
-              <img src="https://ext.same-assets.com/3112424916/984117610.png" alt="LinkedIn" className="w-10 h-10" />
+              <img
+                src="https://ext.same-assets.com/3112424916/984117610.png"
+                alt="LinkedIn"
+                className="w-10 h-10"
+              />
             </a>
             <a
               href="https://www.instagram.com/streetlevelentrepreneur"
@@ -59,29 +101,42 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="Instagram"
             >
-              <img src="https://ext.same-assets.com/3112424916/2033636806.png" alt="Instagram" className="w-10 h-10" />
+              <img
+                src="https://ext.same-assets.com/3112424916/2033636806.png"
+                alt="Instagram"
+                className="w-10 h-10"
+              />
             </a>
           </div>
         </div>
 
         {/* Stay in touch */}
         <div className="flex flex-col items-center md:items-start min-w-[320px]">
-          <div className="font-bold mb-2 text-lg text-white">Stay in touch with us!</div>
+          <div className="font-bold mb-2 text-lg text-white">
+            Stay in touch with us!
+          </div>
           <div className="mb-2 text-base opacity-90 leading-tight text-white max-w-[300px] text-center md:text-left">
-            The Street Level Pulse will give you helpful ideas, articles, and tools to get you moving forward.
+            The Street Level Pulse will give you helpful ideas, articles, and
+            tools to get you moving forward.
           </div>
           <div className="w-full flex flex-col items-center md:items-start">
             <a
               href="#"
               className="inline-flex items-center hover:text-[#e4b05a] mb-2 text-base font-semibold transition-colors !text-white"
             >
-              <span role="img" aria-label="Sign up" className="mr-1">📝</span> Sign up here
+              <span role="img" aria-label="Sign up" className="mr-1">
+                📝
+              </span>{" "}
+              Sign up here
             </a>
             <a
               href="mailto:info@streetlevelentrepreneur.com?subject=SLE%20Inquiry"
               className="inline-flex items-center  hover:text-[#e4b05a] text-base font-semibold transition-colors !text-white"
             >
-              <span role="img" aria-label="Contact" className="mr-1">✉️</span> Contact us today.
+              <span role="img" aria-label="Contact" className="mr-1">
+                ✉️
+              </span>{" "}
+              Contact us today.
             </a>
           </div>
         </div>
