@@ -76,7 +76,7 @@ const FeaturedGrid = () => (
             key={idx}
             className="
               bg-white
-              rounded-2xl
+              rounded-xl
               border border-gray-200
               shadow-2xl
               flex flex-col
