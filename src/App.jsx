@@ -11,6 +11,8 @@ import ArticlesPage from './pages/ArticlesPage';
 import ToolsPage from './pages/ToolsPage';
 import BusinessToolsPage from './pages/BusinessToolsPage';
 import ContactPage from './pages/ContactPage';
+import TermsOfService from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/business-tools" element={<BusinessToolsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/toc" element={<TermsOfService/>}/>
+          <Route path='/pp' element={<PrivacyPolicy/>}/>
         </Routes>
         <Footer />
       </div>
