@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="flex justify-center py-12 px-4">
         <div>
           <h2
-            className="font-extrabold text-black text-4xl md:text-7xl leading-none text-center"
+            className="font-black text-black text-4xl md:text-7xl leading-none text-center"
             style={{ fontFamily: "'Montserrat', Arial, sans-serif" }}
           >
             We Make<br />
