@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -17,6 +18,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen">
         <Header />
         <Routes>
@@ -24,7 +26,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/community-tools" element={<ToolsPage />} />
           <Route path="/business-tools" element={<BusinessToolsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/toc" element={<TermsOfService/>}/>

@@ -8,7 +8,7 @@ const searchData = [
     { type: "Page", label: 'About', link: '/about' },
     { type: "Page", label: 'Services', link: '/services' },
     { type: "Page", label: 'SLE Articles', link: '/articles' },
-    { type: "Page", label: 'Community Tools', link: '/tools' },
+    { type: "Page", label: 'Community Tools', link: '/community-tools' },
     { type: "Page", label: 'Business Tools', link: '/business-tools' },
     { type: "Page", label: 'Contact', link: '/contact' },
   ],
