@@ -39,7 +39,7 @@ const navigationItems = [
   { label: 'About', link: '/about' },
   { label: 'Services', link: '/services' },
   { label: 'SLE Articles', link: '/articles' },
-  { label: 'Community Tools', link: '/tools' },
+  { label: 'Community Tools', link: '/community-tools' },
   { label: 'Business Tools', link: '/business-tools' },
   { label: 'Contact', link: '/contact' },
 ];
