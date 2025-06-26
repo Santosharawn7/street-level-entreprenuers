@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from 'react-router-dom';
 
 // Social share URLs and icons
 const SOCIALS = [
@@ -44,7 +45,7 @@ const articles = [
     tag: "Entrepreneurship",
     title: "Help! I Want to Start a Small Business – Where Do I Begin?",
     description: "Before you start a business, there a few key principles you should consider before starting.",
-    url: "/articles/start-a-small-business"
+    url: "/post/help-i-want-to-start-a-business-where-do-i-begin"
   },
   {
     image: "https://static.wixstatic.com/media/b9418f76e1164c32a06f99d4bcb021b4.jpg/v1/fill/w_1816,h_1212,fp_0.50_0.50,q_90,enc_avif,quality_auto/b9418f76e1164c32a06f99d4bcb021b4.jpg",
@@ -52,7 +53,7 @@ const articles = [
     tag: "Small Business",
     title: "The Most Common Mistakes When Starting Your Small Business",
     description: "Do you have all the right pieces in place for your small business to succeed?",
-    url: "/articles/common-mistakes-small-business"
+    url: "/post/the-most-common-mistakes-when-starting-your-small-business"
   },
   {
     image: "https://static.wixstatic.com/media/11062b_a1ea8c6152774fa79f7bd5758d0dcd54~mv2.jpg/v1/fill/w_1816,h_1212,fp_0.50_0.50,q_90,enc_avif,quality_auto/11062b_a1ea8c6152774fa79f7bd5758d0dcd54~mv2.jpg",
@@ -60,7 +61,7 @@ const articles = [
     tag: "Marketing",
     title: "Understanding the Marketing Concept at the “Street” Level",
     description: "Learn the different elements that will give you a systematic way to evaluate your business in relation to your competitors.",
-    url: "/articles/marketing-concept-street-level"
+    url: "/post/understanding-the-marketing-concept-at-the-street-level-1"
   },
   {
     image: "https://static.wixstatic.com/media/58b12b_0f573b7c9dbe46538dc1b4b61f459816~mv2.png/v1/fill/w_1816,h_1144,fp_0.50_0.50,q_95,enc_avif,quality_auto/58b12b_0f573b7c9dbe46538dc1b4b61f459816~mv2.png",
@@ -68,7 +69,7 @@ const articles = [
     tag: "Entrepreneurship",
     title: "How to get your Business “Back on Track”",
     description: "You've started a business – now what? Here are some suggestions to help you get back on track.",
-    url: "/articles/back-on-track"
+    url: "/post/how-to-get-your-business-back-on-track"
   }
 ];
 
@@ -111,10 +112,11 @@ const ArticlesPage = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {articles.map((art, idx) => (
-              <div
+              <Link
+                to={art.url}
                 key={art.url}
-                className="bg-white !text-black rounded-xl shadow-md overflow-hidden flex flex-col relative"
-              >
+                className="bg-white !text-black rounded-xl shadow-md overflow-hidden flex flex-col relative transition hover:shadow-lg"
+                >
                 <img
                   src={art.image}
                   alt={art.title}
@@ -187,7 +189,7 @@ const ArticlesPage = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
