@@ -1,42 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from 'react-router-dom';
-
-// Social share URLs and icons
-const SOCIALS = [
-  {
-    name: "Facebook",
-    icon: (
-      <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="24" fill="#4667B2"/>
-        <path d="M28.812 24H26v12h-4V24h-2v-4h2v-2c0-2.206 1.794-4 4-4h2v4h-2c-.552 0-1 .448-1 1v1h3.812l-.8 4z" fill="#fff"/>
-      </svg>
-    ),
-    makeUrl: (url, title) =>
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`
-  },
-  {
-    name: "X",
-    icon: (
-      <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="24" fill="#5CB3F8"/>
-        <path d="M19.13 15h2.49l5.18 6.8 5.18-6.8h2.51L27.9 23l6.71 8.99h-2.49l-5.33-7-5.33 7h-2.5L24.1 23 19.13 15zm7.09 7.66l-2.2-2.9-2.18 2.9h4.38z" fill="#fff"/>
-      </svg>
-    ),
-    makeUrl: (url, title) =>
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`
-  },
-  {
-    name: "LinkedIn",
-    icon: (
-      <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="24" fill="#0077B5"/>
-        <path d="M17 19h4v12h-4zm2-2.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM27 19c-2.21 0-4 1.79-4 4v8h4v-8c0-.55.45-1 1-1s1 .45 1 1v8h4v-8c0-2.21-1.79-4-4-4z" fill="#fff"/>
-      </svg>
-    ),
-    makeUrl: (url, title) =>
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
-  }
-];
+import {
+  FaEllipsisV,
+  FaFacebookF,
+  FaLinkedinIn
+} from "react-icons/fa";
+import { FaXTwitter, FaShare } from "react-icons/fa6";
+import { BiLinkAlt } from "react-icons/bi";
 
 const articles = [
   {
@@ -74,39 +44,42 @@ const articles = [
 ];
 
 const ArticlesPage = () => {
-  const [menuIdx, setMenuIdx] = useState(null);
+  const [showShareMenuIdx, setShowShareMenuIdx] = useState(null); // Step 1: popover menu idx
+  const [showShareOptions, setShowShareOptions] = useState(false); // Step 2: modal
+  const [selectedArticle, setSelectedArticle] = useState(null);
+
   const menuRef = useRef(null);
+  const shareRef = useRef(null);
 
-  // Close share menu on outside click
-  React.useEffect(() => {
-    if (menuIdx === null) return;
-    const onClick = (e) => {
-      if (!menuRef.current?.contains(e.target)) setMenuIdx(null);
+  // Outside click for popover
+  useEffect(() => {
+    if (showShareMenuIdx === null) return;
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowShareMenuIdx(null);
+      }
     };
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
-  }, [menuIdx]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showShareMenuIdx]);
 
-  // Copy link helper
-  const handleCopyLink = (article) => {
-    const shareUrl = window.location.origin + article.url;
-    navigator.clipboard.writeText(shareUrl);
-    setMenuIdx(null);
-    alert("Link copied!");
-  };
+  // Outside click for modal
+  useEffect(() => {
+    if (!showShareOptions) return;
+    const handleClickOutside = (event) => {
+      if (shareRef.current && !shareRef.current.contains(event.target)) {
+        setShowShareOptions(false);
+        setSelectedArticle(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showShareOptions]);
 
-  // Social share helper
-  const handleSocialShare = (article, social) => {
-    const shareUrl = window.location.origin + article.url;
-    const shareTitle = article.title;
-    window.open(social.makeUrl(shareUrl, shareTitle), "_blank", "noopener");
-    setMenuIdx(null);
-  };
+  const shareUrl = selectedArticle ? window.location.origin + selectedArticle.url : "";
 
   return (
     <div className="pt-20 min-h-screen bg-white">
-      {/* Header Section */}
-
       {/* Article Grid */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -116,7 +89,13 @@ const ArticlesPage = () => {
                 to={art.url}
                 key={art.url}
                 className="bg-white !text-black rounded-xl shadow-md overflow-hidden flex flex-col relative transition hover:shadow-lg"
-                >
+                // Prevent navigation when clicking the share UI
+                onClick={e => {
+                  if (showShareMenuIdx === idx || showShareOptions) {
+                    e.preventDefault();
+                  }
+                }}
+              >
                 <img
                   src={art.image}
                   alt={art.title}
@@ -124,59 +103,44 @@ const ArticlesPage = () => {
                   style={{ objectPosition: "center" }}
                 />
                 <div className="relative">
-                  {/* Three Dots, now inside the white card */}
+                  {/* Three Dots button */}
                   <div className="absolute top-4 right-4 z-20">
                     <button
                       className="p-2 rounded-lg !bg-white hover:bg-gray-100 transition shadow"
                       onClick={e => {
+                        e.preventDefault();
                         e.stopPropagation();
-                        setMenuIdx(idx === menuIdx ? null : idx);
+                        setSelectedArticle(art);
+                        setShowShareMenuIdx(idx); // open popover
                       }}
                     >
-                      <svg width={32} height={32} fill="currentColor" viewBox="0 0 20 20">
-                        <circle cx="10" cy="4" r="1.5" />
-                        <circle cx="10" cy="10" r="1.5" />
-                        <circle cx="10" cy="16" r="1.5" />
-                      </svg>
+                      <FaEllipsisV size={28} />
                     </button>
-                    {/* Enlarged Share Popup */}
-                    {menuIdx === idx && (
+                    {/* Step 1: Popover Menu */}
+                    {showShareMenuIdx === idx && (
                       <div
                         ref={menuRef}
-                        className="absolute right-0 mt-2 w-max bg-white border border-gray-200 rounded-2xl shadow-2xl py-8 px-2 flex flex-col items-center"
-                        style={{ top: 44, zIndex: 50 }}
+                        className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-30"
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
                       >
-                        <div className="font-bold text-xl text-sle-navy mb-6 text-center">
-                          Share Post
-                        </div>
-                        <div className="flex justify-center gap-7 mb-3">
-                          {SOCIALS.map((social) => (
-                            <button
-                              key={social.name}
-                              aria-label={`Share to ${social.name}`}
-                              onClick={() => handleSocialShare(art, social)}
-                              className="outline-none focus:ring-2 focus:ring-sle-gold"
-                            >
-                              {social.icon}
-                            </button>
-                          ))}
-                          {/* Copy link icon */}
-                          <button
-                            aria-label="Copy Link"
-                            onClick={() => handleCopyLink(art)}
-                          >
-                            <svg width={44} height={44} viewBox="0 0 48 48">
-                              <circle cx="24" cy="24" r="24" fill="#393939"/>
-                              <path d="M28 22h-8a4 4 0 0 0 0 8h8a4 4 0 0 0 0-8zm-8-2a6 6 0 1 1 0 12h-1a1 1 0 1 1 0-2h1a4 4 0 1 0 0-8zm8-2a1 1 0 0 1 0 2h-1a6 6 0 1 1 0-12h1a1 1 0 1 1 0 2h-1a4 4 0 1 0 0 8z" fill="#fff"/>
-                            </svg>
-                          </button>
-                        </div>
+                        <button
+                          onClick={e => {
+                            e.preventDefault(); // <--- prevent navigation!
+                            e.stopPropagation();
+                            setShowShareOptions(true); // open modal
+                            setShowShareMenuIdx(null); // close popover
+                          }}
+                          className="flex items-center px-4 py-2 w-full text-left !bg-white hover:text-blue-500"
+                        >
+                          <FaShare className="mr-2" /> Share Post
+                        </button>
                       </div>
                     )}
                   </div>
-
                   <div className="p-6 flex flex-col flex-1">
-                    {/* Date & Tag stacked */}
                     <div className="flex flex-col text-center items-center mb-4">
                       <span className="text-sm text-gray-800 font-medium">{art.date}</span>
                       <span className="text-base text-sle-gold font-semibold">{art.tag}</span>
@@ -194,6 +158,86 @@ const ArticlesPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Step 2: Share Options Modal */}
+      {showShareOptions && selectedArticle && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div
+            ref={shareRef}
+            className="bg-white p-6 rounded-lg text-center w-80"
+            onClick={e => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <h3 className="text-lg font-semibold mb-4">Share Post</h3>
+            <div className="flex justify-center gap-4">
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Share on Facebook"
+                className="!text-white bg-[#4464A3] p-3 rounded-full"
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'noopener');
+                  setShowShareOptions(false);
+                  setSelectedArticle(null);
+                }}
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Share on Twitter"
+                className="!text-white bg-[#55ACEE] p-3 rounded-full"
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}`, '_blank', 'noopener');
+                  setShowShareOptions(false);
+                  setSelectedArticle(null);
+                }}
+              >
+                <FaXTwitter />
+              </a>
+              <a
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Share on LinkedIn"
+                className="!text-white bg-[#0077B5] p-3 rounded-full"
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}`, '_blank', 'noopener');
+                  setShowShareOptions(false);
+                  setSelectedArticle(null);
+                }}
+              >
+                <FaLinkedinIn />
+              </a>
+              <button
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  navigator.clipboard.writeText(shareUrl);
+                  setShowShareOptions(false);
+                  setSelectedArticle(null);
+                  alert("Link copied to clipboard!");
+                }}
+                title="Copy Link"
+                className="!text-white bg-black !p-3 !rounded-full"
+              >
+                <BiLinkAlt />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
