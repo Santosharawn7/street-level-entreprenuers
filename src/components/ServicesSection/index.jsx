@@ -128,10 +128,10 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <a
             href="/services"
-            className="px-8 py-3 font-bold rounded-none text-lg transition"
+            className="px-8 py-3 font-bold rounded-none text-lg transition hover:!bg-white"
             style={{
               color: '#12283a',
               border: '3px solid #12283a',
