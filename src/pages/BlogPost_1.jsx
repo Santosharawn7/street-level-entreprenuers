@@ -19,7 +19,8 @@ const SmallBusinessBlog = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  const postUrl = `${window.location.origin}/post/help-i-want-to-start-a-business-where-do-i-begin`;
+  // Always share the exact current page URL:
+  const postUrl = window.location.href;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -137,7 +138,7 @@ const SmallBusinessBlog = () => {
               <button
                 onClick={handleCopyLink}
                 title="Copy Link"
-                className="!text-white bg-black !p-3 !rounded-full"
+                className="!text-white bg-black p-3 rounded-full"
               >
                 <BiLinkAlt />
               </button>
@@ -191,7 +192,7 @@ const SmallBusinessBlog = () => {
       <img
         src="https://static.wixstatic.com/media/11062b_6b97e409e55e4a56a53f5b95122215b6~mv2.jpeg/v1/fill/w_1480,h_810,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_6b97e409e55e4a56a53f5b95122215b6~mv2.jpeg"
         alt="Monopoly game pieces"
-        className=" my-8 w-full object-cover"
+        className="my-8 w-full object-cover"
       />
 
       {/* Section 3 */}
@@ -260,8 +261,8 @@ const SmallBusinessBlog = () => {
         <button
           onClick={handleCopyLink}
           title="Copy Link"
-          className="ext-black text-xl hover:opacity-70 -ml-3 bg-transparent border-none flex items-center"
-          style={{ border: "none", background: "none" }}
+          className="text-black text-xl hover:opacity-70 bg-transparent border-none flex items-center"
+          style={{ background: "none", border: "none" }}
         >
           <BiLinkAlt />
         </button>

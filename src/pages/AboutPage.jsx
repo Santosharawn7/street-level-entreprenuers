@@ -110,113 +110,84 @@ const AboutPage = () => {
 
         {/* Contact & Social Row */}
         <div className="flex flex-col md:flex-row gap-12 mt-10 md:pt-20 items-start">
-          {/* Contact Form Card */}
-          <div className="flex-1">
-            <div className="mb-7">
-              <span className="block font-semibold font-poppins text-2xl text-black mb-1 leading-tight">
-                Drop us a message below.
-                <br />
-                We look forward to hearing from you!
-              </span>
-            </div>
-            {sent ? (
-              <div className="text-lg text-green-700 font-bold">
-                Thank you! Your message has been sent.
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="flex flex-col md:flex-row gap-4 mb-2">
-                  <div className="flex-1">
-                    <label className="block text-base mb-1 text-black font-poppins">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      className="border border-black text-black rounded-none px-3 py-3 w-full text-lg"
-                      name="firstName"
-                      required
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-base mb-1 text-black font-poppins">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      className="border border-black text-black rounded-none px-3 py-3 w-full text-lg"
-                      name="lastName"
-                      required
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-base mb-1 text-black font-poppins">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      className="border border-black rounded-none text-black px-3 py-3 w-full text-lg"
-                      name="email"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-base mb-1 text-black font-poppins">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="border border-black text-black rounded-none px-3 py-3 w-full text-lg resize-none"
-                    name="message"
-                    required
-                  />
-                </div>
-                {error && (
-                  <div className="text-red-600 text-sm mt-2">{error}</div>
-                )}
-                <div className="flex justify-end mt-4">
-                  <button
-                    type="submit"
-                    className="w-48 bg-[#156072] text-white py-2 font-semibold font-poppins hover:bg-sle-gold hover:text-black transition-colors text-lg"
-                  >
-                    Send
-                  </button>
-                </div>
-              </form>
-            )}
-            <div className="mt-6">
-              <p className="text-base font-bold text-black font-open-sans mb-0">
-                If you prefer, you can send us an email:
-              </p>
-              <a
-                href="mailto:info@streetlevelentrepreneur.com"
-                className="text-base underline text-black font-open-sans"
-              >
-                info@streetlevelentrepreneur.com
-              </a>
-            </div>
-          </div>
+  {/* Contact Information Card */}
+  <div className="flex-1">
+    <div className="mb-7">
+      <span className="block font-semibold font-poppins text-2xl text-black mb-1 leading-tight">
+        Ready to connect with us?
+        <br />
+        We look forward to hearing from you!
+      </span>
+    </div>
+    
+    {/* Contact Information */}
+    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+      <div className="mb-6">
+        <h3 className="text-xl font-bold text-[#156072] font-poppins mb-3">
+          Get in Touch
+        </h3>
+        <p className="text-base text-black font-open-sans mb-4">
+          For inquiries, appointments, or more information about our services, reach out to us directly:
+        </p>
+      </div>
 
-          {/* Social Media, right side */}
-          <div className="flex justify-end mb-6">
-            <div className="flex flex-row gap-7">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="text-black hover:text-[#e4b05a] transition-colors"
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-             
-        </div>
+      <div className="mb-6">
+        <a
+          href="mailto:info@streetlevelentrepreneur.com"
+          className="inline-flex items-center justify-center bg-[#156072] hover:bg-sle-gold hover:text-black !text-white text-lg font-semibold font-poppins px-6 py-3 rounded-lg transition-colors w-full md:w-auto"
+        >
+          <svg 
+            className="w-5 h-5 mr-2" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M3 8l7.89 3.26a2 2 0 001.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Send Email
+        </a>
+      </div>
+
+      <div className="border-t border-gray-300 pt-4">
+        <p className="text-sm text-gray-600 font-open-sans">
+          We typically respond to emails within 24 hours during business days.
+        </p>
+      </div>
+    </div>
+    
+    <div className="mt-6">
+      <p className="text-base font-bold text-black font-open-sans mb-1">
+        Email us directly at:
+      </p>
+      <a
+        href="mailto:info@streetlevelentrepreneur.com"
+        className="text-base underline text-black font-open-sans hover:text-[#156072] transition-colors"
+      >
+        info@streetlevelentrepreneur.com
+      </a>
+    </div>
+  </div>
+
+  {/* Social Media, right side */}
+  <div className="flex justify-end mb-6">
+    <div className="flex flex-row gap-7">
+      {socialLinks.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.label}
+          className="text-black hover:text-[#e4b05a] transition-colors"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          {link.icon}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
         
       </section>
       <WhyChooseUsSection/>

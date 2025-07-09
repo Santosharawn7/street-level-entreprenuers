@@ -5,7 +5,7 @@ const testimonials = [
   {
     image:
       "https://static.wixstatic.com/media/5238def5c2624723ab217bfb08a3ef78.jpg/v1/fill/w_3110,h_832,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/5238def5c2624723ab217bfb08a3ef78.jpg",
-    text: `“I couldn't have launched my catering business without the amazing business plan created by Richard. His strategic vision and attention to detail made all the difference. Not only did he lay out a clear roadmap for success, but Richard also brought a fresh perspective to the table. Thanks you Richard for your expertise, I'm confidently serving up success on a silver platter. Cheers!”`,
+    text: `"I couldn't have launched my catering business without the amazing business plan created by Richard. His strategic vision and attention to detail made all the difference. Not only did he lay out a clear roadmap for success, but Richard also brought a fresh perspective to the table. Thanks you Richard for your expertise, I'm confidently serving up success on a silver platter. Cheers!"`,
     name: "Tanya Marriott",
   },
   {
@@ -40,17 +40,14 @@ const Testimonial = () => {
     enter: (dir) => ({
       x: dir > 0 ? 150 : -150,
       opacity: 0,
-      position: "absolute",
     }),
     center: {
       x: 0,
       opacity: 1,
-      position: "relative",
     },
     exit: (dir) => ({
       x: dir > 0 ? -150 : 150,
       opacity: 0,
-      position: "absolute",
     }),
   };
 
@@ -129,6 +126,7 @@ const Testimonial = () => {
 
       {/* Testimonial Box */}
       <div className="relative z-10 flex flex-col items-center w-full">
+        {/* Fixed container to prevent shrinking */}
         <div className="relative flex justify-center w-full">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
@@ -139,7 +137,7 @@ const Testimonial = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="w-full flex justify-center"
+              className="flex justify-center w-full"
             >
               <div className="bg-[#33708d] bg-opacity-95 rounded-[40px] shadow-2xl px-8 py-10 md:px-16 md:py-14 max-w-4xl flex flex-col items-center text-center text-white font-bold mx-2">
                 <blockquote className="text-2xl md:text-3xl leading-relaxed font-[Poppins,sans-serif] mb-8 font-semibold whitespace-pre-line">

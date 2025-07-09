@@ -24,22 +24,24 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="min-h-screen">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/community-tools" element={<ToolsPage />} />
-          <Route path="/business-tools" element={<BusinessToolsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/toc" element={<TermsOfService/>}/>
-          <Route path='/pp' element={<PrivacyPolicy/>}/>
-          <Route path='/post/help-i-want-to-start-a-business-where-do-i-begin' element={<SmallBusinessBlog/>}/>
-          <Route path="/post/the-most-common-mistakes-when-starting-your-small-business" element={<BusinessMistakesBlog/>}/>
-          <Route path="/post/understanding-the-marketing-concept-at-the-street-level-1" element={<MartketingConceptBlog/>}/>
-          <Route path="/post/how-to-get-your-business-back-on-track" element={<BusinessBackOnTrackBlog/>}/>   
-        </Routes>
+        <Header className="!sticky top-0 z-50" />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/articles" element={<ArticlesPage />} />
+            <Route path="/community-tools" element={<ToolsPage />} />
+            <Route path="/business-tools" element={<BusinessToolsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/toc" element={<TermsOfService/>}/>
+            <Route path='/pp' element={<PrivacyPolicy/>}/>
+            <Route path='/post/help-i-want-to-start-a-business-where-do-i-begin' element={<SmallBusinessBlog/>}/>
+            <Route path="/post/the-most-common-mistakes-when-starting-your-small-business" element={<BusinessMistakesBlog/>}/>
+            <Route path="/post/understanding-the-marketing-concept-at-the-street-level-1" element={<MartketingConceptBlog/>}/>
+            <Route path="/post/how-to-get-your-business-back-on-track" element={<BusinessBackOnTrackBlog/>}/>   
+          </Routes>
+        </main>
         <Footer />
       </div>
     </Router>
