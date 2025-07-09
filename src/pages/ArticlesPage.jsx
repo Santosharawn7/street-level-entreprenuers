@@ -170,7 +170,7 @@ const ArticlesPage = () => {
               e.stopPropagation();
             }}
           >
-            <h3 className="text-lg font-semibold mb-4">Share Post</h3>
+            <h3 className="text-lg !text-black font-semibold mb-4">Share Post</h3>
             <div className="flex justify-center gap-4">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
